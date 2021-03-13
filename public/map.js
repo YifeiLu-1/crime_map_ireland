@@ -147292,8 +147292,9 @@ stationLayer.addLayer(markers);
 
 $("#year").change(function () {
   year = $(this).val();
+  console.log(year);
   // change h2 in html
-  $("#map-section h2").text(county + " Crimes in " + year);
+  $("#map-section h1").text(county + " Crimes in " + year);
 
   stationLayer.clearLayers();
   markers = L.markerClusterGroup({
@@ -147310,7 +147311,7 @@ $("#county").change(function () {
   const county = $(this).val();
 
   // change h2 in html
-  $("#map-section h2").text(county + " Crimes in " + year);
+  $("#map-section h1").text(county + " Crimes in " + year);
 
   
   const countyLocations = {
