@@ -1,0 +1,98 @@
+<%- include("partials/header"); -%>
+<section id="title" class="colored-section">
+<div class="container-fluid">
+        <!-- Title -->
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="big-heading" id="heading">
+               Explore the safety of the neighbourhood.
+            </h1>
+
+              <form class="county-selct-form">
+                <div class="row">
+                  <div class="col">
+                    <select class="custom-select custom-select-lg mb-3 county-selct" id="county">
+                      <option value="Dublin">Dublin</option>
+                      <option value="Carlow">Carlow</option>
+                      <option value="Cavan">Cavan</option>
+                      <option value="Clare">Clare</option>
+                      <option value="Cork">Cork</option>
+                      <option value="Donegal">Donegal</option>
+                      <option value="Galway">Galway</option>
+                      <option value="Kerry">Kerry</option>
+                      <option value="Kildare">Kildare</option>
+                      <option value="Kilkenny">Kilkenny</option>
+                      <option value="Laois">Laois</option>
+                      <option value="Leitrim">Leitrim</option>
+                      <option value="Limerick">Limerick</option>
+                      <option value="Longford">Longford</option>
+                      <option value="Louth">Louth</option>
+                      <option value="Mayo">Mayo</option>
+                      <option value="Meath">Meath</option>
+                      <option value="Monaghan">Monaghan</option>
+                      <option value="Offaly">Offaly</option>
+                      <option value="Roscommon">Roscommon</option>
+                      <option value="Sligo">Sligo</option>
+                      <option value="Tipperary">Tipperary</option>
+                      <option value="Waterford">Waterford</option>
+                      <option value="Westmeath">Westmeath</option>
+                      <option value="Wexford">Wexford</option>
+                      <option value="Wicklow">Wicklow</option>
+                       <!-- Clare, Cork, Donegal, Galway, Kerry, Kildare, Kilkenny, Laois, Leitrim, Limerick, Longford, Louth, Mayo, Meath, Monaghan, Offaly, Roscommon, Sligo, Tipperary, Waterford, Westmeath, Wexford and Wicklow -->
+                    </select>
+                  </div>
+                  <div class="col">
+                    <select class="custom-select custom-select-lg mb-3 county-selct" id="year">
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
+                      <option value="2009">2009</option>
+                      <option value="2008">2008</option>
+                      <option value="2007">2007</option>
+                      <option value="2006">2006</option>
+                      <option value="2005">2005</option>
+                      <option value="2004">2004</option>
+                      <option value="2003">2003</option>
+
+                    </select>
+                  </div>
+                  <div class="col-lg-1">
+                    <a href="/#map-section"><button type="button" class="btn btn-primary btn-lg county-select-btn">Go</button></a>
+                    
+                  </div>
+                </div>
+              </form>
+          </div>
+          <div class="col-lg-6">
+            <img
+              class="title-image"
+              src="images/garda.jpg"
+              alt="garda-image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map -->
+
+    <section id="map-section" class="white-section">
+      
+      <div class="container-fluid">
+        <h1 class="map-title">Dublin Crimes in 2019</h2>
+        <div id="map">
+          <script type="text/javascript" src="./map.js"></script>
+        </div>
+      </div>
+    </section>
+
+    
+
+<%- include("partials/footer"); -%>
