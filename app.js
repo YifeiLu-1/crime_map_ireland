@@ -19,21 +19,6 @@ app.get("/", function(req, res){
   res.render("home");
 });
 
-
-
-app.get("/posts/:postId", function(req, res){
-
-const requestedPostId = req.params.postId;
-
-  Post.findOne({_id: requestedPostId}, function(err, post){
-    res.render("post", {
-      title: post.title,
-      content: post.content
-    });
-  });
-
-});
-
 app.get("/about", function(req, res){
   res.render("about");
 });
@@ -46,7 +31,7 @@ app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
 
-
-app.listen(3000, function() {
+let port = process.env.PORT || 3000;
+app.listen(port, function() {
   console.log("Server started on port 3000");
 });
