@@ -147256,6 +147256,25 @@ map.addLayer(stationLayer);
 var markers = L.markerClusterGroup({
   spiderfyOnMaxZoom: false,
   chunkedLoading: true,
+  showCoverageOnHover: false,
+  iconCreateFunction: function (cluster) {
+    // get the number of items in the cluster
+    var count = cluster.getChildCount();
+
+    // figure out how many digits long the number is
+    var digits = (count + "").length;
+
+    // Return a new L.DivIcon with our classes so we can
+    // style them with CSS. Take a look at the CSS in
+    // the <head> to see these styles. You have to set
+    // iconSize to null if you want to use CSS to set the
+    // width and height.
+    return L.divIcon({
+      html: count,
+      className: "cluster digits-" + digits,
+      iconSize: null,
+    });
+  },
 });
 
 function addMarkers(year) {
@@ -147267,7 +147286,7 @@ function addMarkers(year) {
     const stationName = stationData["stationName"];
     const crimeData = stationData["crimeData"];
     const totalCrimeCount = crimeData[year]["0"];
-  
+
     for (let i = 0; i < totalCrimeCount; i++) {
       let marker = L.marker(new L.LatLng(lat, lon), { stationId: stationId });
       marker.bindPopup(stationId);
@@ -147304,7 +147323,6 @@ $("#year").change(function () {
 
   addMarkers(year);
   stationLayer.addLayer(markers);
-
 });
 
 $("#county").change(function () {
@@ -147313,35 +147331,34 @@ $("#county").change(function () {
   // change h2 in html
   $("#map-section h1").text(county + " Crimes in " + year);
 
-  
   const countyLocations = {
-    "Carlow" : [52.8365, -6.9341], 
-    "Cavan": [53.9897, -7.3633], 
-    "Clare": [52.9045, -8.9811], 
-    "Cork": [51.8985, -8.4756], 
-    "Donegal": [54.6538, -8.1096], 
-    "Dublin": [53.3498, -6.2603], 
-    "Galway": [53.2707, -9.0568], 
-    "Kerry": [52.1545, 9.5669], 
-    "Kildare": [53.1589, -6.9096], 
-    "Kilkenny": [52.6541, -7.2448], 
-    "Laois": [52.9943, -7.3323], 
-    "Leitrim": [54.1247, -8.0020], 
-    "Limerick": [52.6638, -8.6267], 
-    "Longford": [53.7276, -7.7933], 
-    "Louth": [53.9508, -6.5406], 
-    "Mayo": [54.0153, -9.4289], 
-    "Meath": [53.6055, -6.6564], 
-    "Monaghan": [54.2492, -6.9683], 
-    "Offaly": [53.2357, -7.7122], 
-    "Roscommon": [53.6340, -8.1819], 
-    "Sligo": [54.2766, -8.4761], 
-    "Tipperary": [52.4747, -8.1544], 
-    "Waterford": [52.2593, -7.1101], 
-    "Westmeath": [53.5345, -7.4653], 
-    "Wexford": [52.3369, -6.4633],
-    "Wicklow": [52.9808, -6.0446]
-  }
+    Carlow: [52.8365, -6.9341],
+    Cavan: [53.9897, -7.3633],
+    Clare: [52.9045, -8.9811],
+    Cork: [51.8985, -8.4756],
+    Donegal: [54.6538, -8.1096],
+    Dublin: [53.3498, -6.2603],
+    Galway: [53.2707, -9.0568],
+    Kerry: [52.1545, 9.5669],
+    Kildare: [53.1589, -6.9096],
+    Kilkenny: [52.6541, -7.2448],
+    Laois: [52.9943, -7.3323],
+    Leitrim: [54.1247, -8.002],
+    Limerick: [52.6638, -8.6267],
+    Longford: [53.7276, -7.7933],
+    Louth: [53.9508, -6.5406],
+    Mayo: [54.0153, -9.4289],
+    Meath: [53.6055, -6.6564],
+    Monaghan: [54.2492, -6.9683],
+    Offaly: [53.2357, -7.7122],
+    Roscommon: [53.634, -8.1819],
+    Sligo: [54.2766, -8.4761],
+    Tipperary: [52.4747, -8.1544],
+    Waterford: [52.2593, -7.1101],
+    Westmeath: [53.5345, -7.4653],
+    Wexford: [52.3369, -6.4633],
+    Wicklow: [52.9808, -6.0446],
+  };
   latLonArray = countyLocations[county];
   let newLatLon = new L.latLng(latLonArray[0], latLonArray[1]);
   map.setView(newLatLon, 13);
