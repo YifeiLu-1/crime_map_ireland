@@ -134,22 +134,30 @@ $("#county").change(function () {
 
 // populate the data object and draw the map
 $.get(
-  "./api/data",
+  "./api/data/2019",
   function (data) {
     addMarkers(data, year, markers);
     stationLayer.addLayer(markers);
-
-    $("#year").change(function () {
-      year = $(this).val();
-      // change h2 in html
-      $("#map-section h1").text(county + " Crimes in " + year);
-
-      stationLayer.clearLayers();
-      markers = L.markerClusterGroup(markersConfig);
-
-      addMarkers(data, year, markers);
-      stationLayer.addLayer(markers);
-    });
   },
   "json"
 );
+
+$("#year").change(function () {
+  year = $(this).val();
+  // change h2 in html
+  $("#map-section h1").text(county + " Crimes in " + year);
+
+  stationLayer.clearLayers();
+  markers = L.markerClusterGroup(markersConfig);
+
+  const urlPath = "./api/data/" + year;
+
+  $.get(
+    urlPath,
+    function (data) {
+      addMarkers(data, year, markers);
+      stationLayer.addLayer(markers);
+    },
+    "json"
+  );
+});
