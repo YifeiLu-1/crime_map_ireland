@@ -128,7 +128,9 @@ p {
 }
 
 
-/* cluster bubbles */
+/* cluster bubbles 
+   from https://esri.github.io/esri-leaflet/examples/styling-clusters.html
+*/
 .digits-1 {
   font-size: 14px;
   height: 28px;
