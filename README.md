@@ -1,6 +1,6 @@
 # crime_map_ireland
 
-This is the source code of http://www.crimemap.ie, a website which visualize crimes in Ireland.
+This is the source code of https://crimemap-ireland.herokuapp.com/, a website which visualize crimes in Ireland.
 
 
 ## Run it locally
